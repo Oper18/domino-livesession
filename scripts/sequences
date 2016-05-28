@@ -1,0 +1,63 @@
+createSourceTiles
+    source.createTile
+    source.dropLastCreatedTile
+    source.createTile
+    source.dropLastCreatedTile
+    source.createTile
+    source.dropLastCreatedTile
+    source.createTile
+    source.dropLastCreatedTile
+    source.createTile
+    source.dropLastCreatedTile
+    source.createTile
+    source.dropLastCreatedTile
+    filter.createTile
+    filter.dropLastCreatedTile
+sourceTileSelection
+    destination.disallowTileSelection
+    source.disallowTileSelection
+    source.alignSelectedTileWithFilter
+    filter.alignFreeSlotWithSource
+    main.assignSelectedSourceTileToFilter
+    filter.dropLastAcceptedTile
+    filter.ifNoFreeSlotsPerformAlgorithm
+    source.allowTileSelection
+destinationTileSelection
+    destination.disallowTileSelection
+    filter.alignFilterSlotWithDestination
+    destination.alignFreeSlotWithFilter
+    main.assignFilterTileToDestination
+    destination.liftLastAcceptedTile
+    destination.alignSelectedTileWithFilter
+    main.assignSelectedDestinationTileToFilter
+    filter.dropLastAcceptedTile
+    filter.returnToInitialRotation
+algorithmFailure
+    filter.returnToInitialRotation
+    filter.dropUnmatchedTile
+    filter.destroyUnmatchedTile
+    filter.dropUnmatchedTile
+    filter.destroyUnmatchedTile
+    source.createTile
+    source.dropLastCreatedTile
+    source.createTile
+    source.dropLastCreatedTile
+algorithmSuccess
+    filter.alignUsedSlotWithDestination
+    destination.alignFreeSlotWithFilter
+    main.assignFilterTileToDestination
+    destination.liftLastAcceptedTile
+    filter.alignUsedSlotWithDestination
+    destination.alignFreeSlotWithFilter
+    main.assignFilterTileToDestination
+    destination.liftLastAcceptedTile
+    source.createTile
+    source.dropLastCreatedTile
+    source.createTile
+    source.dropLastCreatedTile
+    destination.allowTileSelection
+    filter.returnToInitialRotation
+start
+    main.replayStartSound
+    createSourceTiles
+    source.allowTileSelection

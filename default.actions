@@ -1,5 +1,25 @@
 rotate
     default
-        rotateBall
-            point = 0 0 0 0
-            point = 1000 0 360 0
+        rotateDestination
+            relative = 0
+            point = 1000 0 0 0
+        rotateFilter
+            relative = 0
+            point = 1000 0 0 0
+        rotateSource
+            relative = 0
+            point = 1000 0 0 0
+move
+    default
+        liftTile
+            relative = 0
+            point = 500 0 0 0
+        lowerTile
+            relative = 0
+            point = 200 0 0 0
+        dropFilterTile
+            relative = 0
+            point = 200 0 0 0
+        dropUnmatchedTile
+            relative = 0
+            point = 1000 0 0 -11

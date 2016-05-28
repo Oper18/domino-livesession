@@ -11,3 +11,93 @@ material
             normal = pipeline/textures/source_n.png
         leaf
             normal = pipeline/textures/leaf_n.png
+        tile00
+            diffuse = pipeline/textures/tile_tex00.png
+            diffuse = pipeline/textures/tile_n.png
+        tile01
+            diffuse = pipeline/textures/tile_tex01.png
+            diffuse = pipeline/textures/tile_n.png
+        tile02
+            diffuse = pipeline/textures/tile_tex02.png
+            diffuse = pipeline/textures/tile_n.png
+        tile03
+            diffuse = pipeline/textures/tile_tex03.png
+            diffuse = pipeline/textures/tile_n.png
+        tile04
+            diffuse = pipeline/textures/tile_tex04.png
+            diffuse = pipeline/textures/tile_n.png
+        tile05
+            diffuse = pipeline/textures/tile_tex05.png
+            diffuse = pipeline/textures/tile_n.png
+        tile06
+            diffuse = pipeline/textures/tile_tex06.png
+            diffuse = pipeline/textures/tile_n.png
+        tile11
+            diffuse = pipeline/textures/tile_tex11.png
+            diffuse = pipeline/textures/tile_n.png
+        tile12
+            diffuse = pipeline/textures/tile_tex12.png
+            diffuse = pipeline/textures/tile_n.png
+        tile13
+            diffuse = pipeline/textures/tile_tex13.png
+            diffuse = pipeline/textures/tile_n.png
+        tile14
+            diffuse = pipeline/textures/tile_tex14.png
+            diffuse = pipeline/textures/tile_n.png
+        tile15
+            diffuse = pipeline/textures/tile_tex15.png
+            diffuse = pipeline/textures/tile_n.png
+        tile16
+            diffuse = pipeline/textures/tile_tex16.png
+            diffuse = pipeline/textures/tile_n.png
+        tile22
+            diffuse = pipeline/textures/tile_tex22.png
+            diffuse = pipeline/textures/tile_n.png
+        tile23
+            diffuse = pipeline/textures/tile_tex23.png
+            diffuse = pipeline/textures/tile_n.png
+        tile24
+            diffuse = pipeline/textures/tile_tex24.png
+            diffuse = pipeline/textures/tile_n.png
+        tile25
+            diffuse = pipeline/textures/tile_tex25.png
+            diffuse = pipeline/textures/tile_n.png
+        tile26
+            diffuse = pipeline/textures/tile_tex26.png
+            diffuse = pipeline/textures/tile_n.png
+        tile33
+            diffuse = pipeline/textures/tile_tex33.png
+            diffuse = pipeline/textures/tile_n.png
+        tile34
+            diffuse = pipeline/textures/tile_tex34.png
+            diffuse = pipeline/textures/tile_n.png
+        tile35
+            diffuse = pipeline/textures/tile_tex35.png
+            diffuse = pipeline/textures/tile_n.png
+        tile36
+            diffuse = pipeline/textures/tile_tex36.png
+            diffuse = pipeline/textures/tile_n.png
+        tile44
+            diffuse = pipeline/textures/tile_tex44.png
+            diffuse = pipeline/textures/tile_n.png
+        tile45
+            diffuse = pipeline/textures/tile_tex45.png
+            diffuse = pipeline/textures/tile_n.png
+        tile46
+            diffuse = pipeline/textures/tile_tex46.png
+            diffuse = pipeline/textures/tile_n.png
+        tile55
+            diffuse = pipeline/textures/tile_tex55.png
+            diffuse = pipeline/textures/tile_n.png
+        tile56
+            diffuse = pipeline/textures/tile_tex56.png
+            diffuse = pipeline/textures/tile_n.png
+        tile66
+            diffuse = pipeline/textures/tile_tex66.png
+            diffuse = pipeline/textures/tile_n.png
+        filter
+            diffuse = pipeline/textures/filter_tex.png
+            normal = pipeline/textures/filter_n.png
+        destination
+            diffuse = pipeline/textures/destination_tex.png
+            normal = pipeline/textures/destination_n.png

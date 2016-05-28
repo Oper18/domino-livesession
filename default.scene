@@ -5,10 +5,11 @@ node
             parent = ROOT
             position = 0.000000 -10.000000 20.000000
             light = default
+            script = scripts/Main.py
         camera
             parent = ROOT
-            position = -11.847277 -9.745259 15.684014
-            rotation = 46.399574 0.000000 -42.499744
+            position = -5.789190 -12.609151 17.949673
+            rotation = 42.899551 0.000000 -25.999727
             script = scripts/CameraSync.py
         base
             parent = ROOT
@@ -72,6 +73,138 @@ node
         sourceLeaf5
             parent = parent4
             position = 0.000000 3.000000 0.000000
+            material = leaf
+            model = models/leaf.osgt
+            selectable = 1
+        filter
+            parent = base
+            position = 0.000000 0.000000 1.000000
+            material = filter
+            model = models/filter.osgt
+            script = scripts/Filter.py
+        filterLeaf0
+            parent = filter
+            position = 0.000000 2.500000 0.000000
+            material = leaf
+            model = models/leaf.osgt
+            selectable = 1
+        parent5
+            parent = filter
+            rotation = 0.000000 0.000000 120.000000
+        filterLeaf1
+            parent = parent5
+            position = 0.000000 2.500000 0.000000
+            material = leaf
+            model = models/leaf.osgt
+            selectable = 1
+        parent6
+            parent = filter
+            rotation = 0.000000 0.000000 240.000000
+            selectable = 1
+        filterLeaf2
+            parent = parent6
+            position = 0.000000 2.500000 0.000000
+            material = leaf
+            model = models/leaf.osgt
+            selectable = 1
+        destination
+            parent = base
+            position = 6.600000 0.000000 3.000000
+            material = destination
+            model = models/destination.osgt
+            script = scripts/Destination.py
+        destinationLeaf0
+            parent = destination
+            position = 0.000000 4.100000 0.000000
+            material = leaf
+            model = models/leaf.osgt
+            selectable = 1
+        parent7
+            parent = destination
+            rotation = 0.000000 0.000000 36.000000
+        destinationLeaf1
+            parent = parent7
+            position = 0.000000 4.100000 0.000000
+            material = leaf
+            model = models/leaf.osgt
+            selectable = 1
+        parent8
+            parent = destination
+            rotation = 0.000000 0.000000 72.000000
+            selectable = 1
+        destinationLeaf2
+            parent = parent8
+            position = 0.000000 4.100000 0.000000
+            material = leaf
+            model = models/leaf.osgt
+            selectable = 1
+        parent9
+            parent = destination
+            rotation = 0.000000 0.000000 108.000000
+            selectable = 1
+        destinationLeaf3
+            parent = parent9
+            position = 0.000000 4.100000 0.000000
+            material = leaf
+            model = models/leaf.osgt
+            selectable = 1
+        parent10
+            parent = destination
+            rotation = 0.000000 0.000000 144.000000
+            selectable = 1
+        destinationLeaf4
+            parent = parent10
+            position = 0.000000 4.100000 0.000000
+            material = leaf
+            model = models/leaf.osgt
+            selectable = 1
+        parent11
+            parent = destination
+            rotation = 0.000000 0.000000 180.000000
+            selectable = 1
+        destinationLeaf5
+            parent = parent11
+            position = 0.000000 4.100000 0.000000
+            material = leaf
+            model = models/leaf.osgt
+            selectable = 1
+        parent12
+            parent = destination
+            rotation = 0.000000 0.000000 216.000000
+            selectable = 1
+        destinationLeaf6
+            parent = parent12
+            position = 0.000000 4.100000 0.000000
+            material = leaf
+            model = models/leaf.osgt
+            selectable = 1
+        parent13
+            parent = destination
+            rotation = 0.000000 0.000000 252.000000
+            selectable = 1
+        destinationLeaf7
+            parent = parent13
+            position = 0.000000 4.100000 0.000000
+            material = leaf
+            model = models/leaf.osgt
+            selectable = 1
+        parent14
+            parent = destination
+            rotation = 0.000000 0.000000 288.000000
+            selectable = 1
+        destinationLeaf8
+            parent = parent14
+            position = 0.000000 4.100000 0.000000
+            material = leaf
+            model = models/leaf.osgt
+            selectable = 1
+        parent15
+            parent = destination
+            rotation = 0.000000 0.000000 324.000000
+            selectable = 1
+        destinationLeaf9
+            parent = parent15
+            position = 0.000000 4.100000 0.000000
             material = leaf
             model = models/leaf.osgt
             selectable = 1
