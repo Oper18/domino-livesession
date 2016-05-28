@@ -14,14 +14,15 @@ createSourceTiles
     filter.createTile
     filter.dropLastCreatedTile
 sourceTileSelection
+    main.increaseSelectionsNbAndDisplayIt
     destination.disallowTileSelection
     source.disallowTileSelection
     source.alignSelectedTileWithFilter
     filter.alignFreeSlotWithSource
     main.assignSelectedSourceTileToFilter
     filter.dropLastAcceptedTile
-    filter.ifNoFreeSlotsPerformAlgorithm
     source.allowTileSelection
+    filter.ifNoFreeSlotsPerformAlgorithm
 destinationTileSelection
     destination.disallowTileSelection
     filter.alignFilterSlotWithDestination
@@ -33,6 +34,7 @@ destinationTileSelection
     filter.dropLastAcceptedTile
     filter.returnToInitialRotation
 algorithmFailure
+    source.disallowTileSelection
     filter.returnToInitialRotation
     filter.dropUnmatchedTile
     filter.destroyUnmatchedTile
@@ -42,7 +44,9 @@ algorithmFailure
     source.dropLastCreatedTile
     source.createTile
     source.dropLastCreatedTile
+    source.allowTileSelection
 algorithmSuccess
+    source.disallowTileSelection
     filter.alignUsedSlotWithDestination
     destination.alignFreeSlotWithFilter
     main.assignFilterTileToDestination
@@ -57,7 +61,13 @@ algorithmSuccess
     source.dropLastCreatedTile
     destination.allowTileSelection
     filter.returnToInitialRotation
+    source.allowTileSelection
+    main.finishTheGameIfDestinationIsFull
 start
     main.replayStartSound
     createSourceTiles
     source.allowTileSelection
+finish
+    source.disallowTileSelection
+    destination.disallowTileSelection
+    main.displayResults

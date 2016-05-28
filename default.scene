@@ -208,3 +208,33 @@ node
             material = leaf
             model = models/leaf.osgt
             selectable = 1
+        lcd
+            parent = base
+            position = 0.000000 4.500000 2.000000
+            rotation = 90.000000 0.000000 0.000000
+            material = lcd
+            model = models/lcd_base.osgt
+            script = scripts/LCD.py
+        lcd_digit0
+            parent = lcd
+            position = -0.450000 0.000000 0.000000
+            material = lcd_digit
+            model = models/lcd_digit.osgt
+        lcd_digit1
+            parent = lcd
+            position = -0.150000 0.000000 0.000000
+            material = lcd_digit
+            model = models/lcd_digit.osgt
+            selectable = 1
+        lcd_digit2
+            parent = lcd
+            position = 0.150000 0.000000 0.000000
+            material = lcd_digit
+            model = models/lcd_digit.osgt
+            selectable = 1
+        lcd_digit3
+            parent = lcd
+            position = 0.450000 0.000000 0.000000
+            material = lcd_digit
+            model = models/lcd_digit.osgt
+            selectable = 1
