@@ -6,4 +6,4 @@ Overview
 
 It has been created during May 28 2016 Open Game Studio live session.
 
-![Short preview](img/ls.gif)
+[![Short preview](img/ls.gif)](https://youtu.be/8gHYOkMRoos)
