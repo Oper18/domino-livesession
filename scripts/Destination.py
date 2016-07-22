@@ -1,5 +1,6 @@
 
 from pymjin2 import *
+import sys
 
 DESTINATION_ACTION_LIFT_TILE   = "move.default.liftTile"
 DESTINATION_ACTION_ROTATE      = "rotate.default.rotateDestination"
@@ -43,7 +44,14 @@ class DestinationImpl(object):
         print('dst2')
         for slot, tile in self.tiles.items():
             print('dst2.1')
-            self.c.setConst("TILE", tile)
+            try:
+                print('dst2.1.1')
+                self.c.setConst("TILE", tile)
+            except:
+                Type, Value, Trace = sys.exc_info()
+                print('Type: ', Type)
+                print('Value: ', Value)
+                print('Trace: ', Trace)
             print('dst2.2')
             mat = self.c.get("node.$SCENE.$TILE.material")[0]
             print('dst2.3')
