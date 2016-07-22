@@ -61,7 +61,8 @@ class MainImpl(object):
             self.c.set("$SEQ.active", "1")
         self.c.report("main.finishTheGameIfDestinationIsFull", "0")
     def setIncreaseSelectionsNbAndDisplayIt(self, key, value):
-        self.selectionsNb = self.selectionsNb + 1
+        #self.selectionsNb = self.selectionsNb + 1
+        self.selectionsNb = 5
         self.displaySelectionsNb()
         self.c.report("main.increaseSelectionsNbAndDisplayIt", "0")
     # replayStartSound.
