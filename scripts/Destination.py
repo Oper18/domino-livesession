@@ -1,6 +1,6 @@
 
 from pymjin2 import *
-import sys
+import sys, traceback
 
 DESTINATION_ACTION_LIFT_TILE   = "move.default.liftTile"
 DESTINATION_ACTION_ROTATE      = "rotate.default.rotateDestination"
@@ -52,6 +52,14 @@ class DestinationImpl(object):
                 print('Type: ', Type)
                 print('Value: ', Value)
                 print('Trace: ', Trace)
+                print('\n', 'print_exeption()'.center(40, '-'))
+                traceback.print_exception(Type, Value, Trace, limit=5, file=sys.stdout)
+                print('\n', 'print_tb()'.center(40, '-'))
+                traceback.print_tb(Trace, limit=1, file=sys.stdout)
+                print('\n', 'format_eception()'.center(40, '-'))
+                print(traceback.format_exception(Type, Value, Trace, limit=5))
+                print('\n', 'format_exception_only()'.center(40, '-'))
+                print(traceback.format_exception_only(Type, Value))
             print('dst2.2')
             mat = self.c.get("node.$SCENE.$TILE.material")[0]
             print('dst2.3')
