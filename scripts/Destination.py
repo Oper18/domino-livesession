@@ -38,14 +38,23 @@ class DestinationImpl(object):
         return [self.lastSelectedTile]
     # result.
     def getResult(self, key):
+        print('dst1')
         res = 0
+        print('dst2')
         for slot, tile in self.tiles.items():
+            print('dst2.1')
             self.c.setConst("TILE", tile)
+            print('dst2.2')
             mat = self.c.get("node.$SCENE.$TILE.material")[0]
+            print('dst2.3')
             v0 = int(mat[-2])
+            print('dst2.4')
             v1 = int(mat[-1])
+            print('dst2.5')
             res = res + v0 + v1
+        print('dst3')
         return [str(res)]
+        print('dst4')
     # alignFreeSlotWithFilter.
     def onAlignFinish(self, key, value):
         self.c.unlisten("$ROTATE.$SCENE.$NODE.active")
