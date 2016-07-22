@@ -51,8 +51,10 @@ class MainImpl(object):
     def setDisplayResults(self, key, value):
         dst = self.c.get("destination.result")[0]
         src = self.c.get("source.result")[0]
-        val = int(dst) - int(src)
-        self.c.set("lcd.$SCENE.$LCD.value", str(val))
+        #val = int(dst) - int(src)
+        self.selectionsNb = int(dst) - int(src)
+        self.displaySelectionsNb()
+        #self.c.set("lcd.$SCENE.$LCD.value", str(val))
         self.c.report("main.displayResults", "0")
     def setFinishTheGameIfDestinationIsFull(self, key, value):
         dstFull = self.c.get("destionation.isFull")[0]
