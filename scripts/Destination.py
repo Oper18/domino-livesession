@@ -46,6 +46,9 @@ class DestinationImpl(object):
             print('dst2.1')
             try:
                 print('dst2.1.1')
+                if (tile is None):
+                    tile=0
+                    tile=str(tile)
                 self.c.setConst("TILE", tile)
             except:
                 Type, Value, Trace = sys.exc_info()
