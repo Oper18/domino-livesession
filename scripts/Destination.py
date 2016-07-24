@@ -66,9 +66,14 @@ class DestinationImpl(object):
             print('dst2.2')
             mat = self.c.get("node.$SCENE.$TILE.material")[0]
             print('dst2.3')
-            v0 = int(mat[-2])
+            #v0 = int(mat[-2])
+            if (mat is ''):
+                mat='0'
+            print('mat=%s;' %mat)
+            v0 = int(mat)
             print('dst2.4')
-            v1 = int(mat[-1])
+            #v1 = int(mat[-1])
+            v0 = int(mat)
             print('dst2.5')
             res = res + v0 + v1
         print('dst3')
