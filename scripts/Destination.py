@@ -68,12 +68,16 @@ class DestinationImpl(object):
             print('dst2.3')
             #v0 = int(mat[-2])
             if (mat is ''):
-                mat='0'
+                mat0='0'
+                mat1='0'
+            else:
+                mat0=mat[-2]
+                mat1=mat[-1]
             print('mat=%s;' %mat)
-            v0 = int(mat)
+            v0 = int(mat0)
             print('dst2.4')
             #v1 = int(mat[-1])
-            v0 = int(mat)
+            v1 = int(mat1)
             print('dst2.5')
             res = res + v0 + v1
         print('dst3')
