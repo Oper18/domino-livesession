@@ -39,33 +39,13 @@ class DestinationImpl(object):
         return [self.lastSelectedTile]
     # result.
     def getResult(self, key):
-        print('dst1')
         res = 0
-        print('dst2')
         for slot, tile in self.tiles.items():
-            print('dst2.1')
-            try:
-                print('dst2.1.1')
-                if (tile is None):
-                    tile=0
-                    tile=str(tile)
-                self.c.setConst("TILE", tile)
-            except:
-                Type, Value, Trace = sys.exc_info()
-                print('Type: ', Type)
-                print('Value: ', Value)
-                print('Trace: ', Trace)
-                print('\n', 'print_exeption()'.center(40, '-'))
-                traceback.print_exception(Type, Value, Trace, limit=5, file=sys.stdout)
-                print('\n', 'print_tb()'.center(40, '-'))
-                traceback.print_tb(Trace, limit=1, file=sys.stdout)
-                print('\n', 'format_eception()'.center(40, '-'))
-                print(traceback.format_exception(Type, Value, Trace, limit=5))
-                print('\n', 'format_exception_only()'.center(40, '-'))
-                print(traceback.format_exception_only(Type, Value))
-            print('dst2.2')
+            if (tile is None):
+                tile=0
+                tile=str(tile)
+            self.c.setConst("TILE", tile)
             mat = self.c.get("node.$SCENE.$TILE.material")[0]
-            print('dst2.3')
             #v0 = int(mat[-2])
             if (mat is ''):
                 mat0='0'
@@ -73,16 +53,11 @@ class DestinationImpl(object):
             else:
                 mat0=mat[-2]
                 mat1=mat[-1]
-            print('mat=%s;' %mat)
             v0 = int(mat0)
-            print('dst2.4')
             #v1 = int(mat[-1])
             v1 = int(mat1)
-            print('dst2.5')
             res = res + v0 + v1
-        print('dst3')
         return [str(res)]
-        print('dst4')
     # alignFreeSlotWithFilter.
     def onAlignFinish(self, key, value):
         self.c.unlisten("$ROTATE.$SCENE.$NODE.active")
