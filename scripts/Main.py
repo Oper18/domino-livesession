@@ -17,7 +17,9 @@ class MainImpl(object):
     def __del__(self):
         self.c = None
     def displaySelectionsNb(self):
+        print('main3')
         self.c.set("lcd.$SCENE.$LCD.value", str(self.selectionsNb))
+        print('main4')
     def onFileNameAbs(self, key, value):
         self.fileNameAbs = value[0]
     def onSpace(self, key, value):
@@ -52,7 +54,9 @@ class MainImpl(object):
         dst = self.c.get("destination.result")[0]
         src = self.c.get("source.result")[0]
         #val = int(dst) - int(src)
+        print('main1')
         self.selectionsNb = int(dst) - int(src)
+        print('main2')
         self.displaySelectionsNb()
         #self.c.set("lcd.$SCENE.$LCD.value", str(val))
         self.c.report("main.displayResults", "0")
@@ -65,7 +69,7 @@ class MainImpl(object):
     def setIncreaseSelectionsNbAndDisplayIt(self, key, value):
         #self.selectionsNb = self.selectionsNb + 1
         self.setDisplayResults(key, value)
-        self.displaySelectionsNb()
+        #self.displaySelectionsNb()
         self.c.report("main.increaseSelectionsNbAndDisplayIt", "0")
     # replayStartSound.
     def setReplayStartSound(self, key, value):
