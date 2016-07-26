@@ -29,7 +29,21 @@ class SourceImpl(object):
         print('source2')
         for slot, tile in self.tiles.items():
             print('source2.1')
-            self.c.setConst("TILE", tile)
+            try:
+                self.c.setConst("TILE", tile)
+            except:
+                Type, Value, Trace = sys.exc_info()
+                print('Type:%s' %Type)
+                print('Value:%s' %Value)
+                print('Trace:%s' %Trace)
+                print('print_exception()'.center(40, '-'))
+                traceback.print_exception(Type, Value, Trace, limit=5, file=sys.stdout)
+                print('print_tb()'.center(40, '-'))
+                traceback.print_tb(Trace, limit=1, file=sys.stdout)
+                print('format_exception()'.center(40, '-'))
+                print(traceback.format_exception(Type, Value, Trace, limit=5))
+                print('format_exception_only()'.center(40, '-'))
+                print(traceback.fromat_exception_only(Type, Value))
             print('source2.2')
             mat = self.c.get("node.$SCENE.$TILE.material")[0]
             print('source2.3')
