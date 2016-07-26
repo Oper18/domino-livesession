@@ -137,3 +137,6 @@ material
         lcd_digit9
             diffuse = pipeline/textures/lcd_digit_tex9.png
             normal = pipeline/textures/lcd_digit_n.png
+        lcd_digit-
+            diffuse = pipeline/textures/lcd_digit_tex.png
+            normal = pipeline/textures/lcd_digit_n.png
