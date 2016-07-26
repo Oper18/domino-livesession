@@ -1,5 +1,6 @@
 
 from pymjin2 import *
+import sys, traceback
 
 SOURCE_ACTION_DROP_TILE      = "move.default.lowerTile"
 SOURCE_ACTION_ROTATE         = "rotate.default.rotateSource"
@@ -23,14 +24,23 @@ class SourceImpl(object):
         return [self.lastSelectedTileName]
     # result.
     def getResult(self, key):
+        print('source1')
         res = 0
+        print('source2')
         for slot, tile in self.tiles.items():
+            print('source2.1')
             self.c.setConst("TILE", tile)
+            print('source2.2')
             mat = self.c.get("node.$SCENE.$TILE.material")[0]
+            print('source2.3')
             i = int(mat[-2])
+            print('source2.4')
             j = int(mat[-1])
+            print('source2.5')
             res = res + i + j
+        print('source3')
         return [str(res)]
+        print('source4')
     # alignSelectedTileWithFilter.
     def onAlignFinish(self, key, value):
         self.c.unlisten("$ROTATE.$SCENE.$NODE.active")
