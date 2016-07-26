@@ -18,7 +18,7 @@ class MainImpl(object):
         self.c = None
     def displaySelectionsNb(self):
         print('main3')
-        self.c.set("lcd.$SCENE.$LCD.value", str(self.selectionsNb))
+        self.c.set("lcd.$SCENE.$LCD.value", str(self.selectionsNb))           
         print('main4')
     def onFileNameAbs(self, key, value):
         self.fileNameAbs = value[0]
@@ -57,6 +57,7 @@ class MainImpl(object):
         print('main1')
         self.selectionsNb = int(dst) - int(src)
         print('main2')
+        print('selectionsNb=%d' %self.selectionsNb)
         self.displaySelectionsNb()
         #self.c.set("lcd.$SCENE.$LCD.value", str(val))
         self.c.report("main.displayResults", "0")
