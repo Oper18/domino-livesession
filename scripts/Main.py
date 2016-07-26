@@ -52,6 +52,7 @@ class MainImpl(object):
         self.c.report("main.clearLCD", "0")
     def setDisplayResults(self, key, value):
         dst = self.c.get("destination.result")[0]
+        print('main0')
         src = self.c.get("source.result")[0]
         #val = int(dst) - int(src)
         print('main1')
