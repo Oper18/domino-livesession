@@ -38,7 +38,7 @@ class DestinationImpl(object):
     def getLastSelectedTile(self, key):
         return [self.lastSelectedTile]
     # result.
-    def getResult(self, key):
+    '''def getResult(self, key):
         res = 0
         for slot, tile in self.tiles.items():
             if (tile is None):
@@ -57,6 +57,14 @@ class DestinationImpl(object):
             #v1 = int(mat[-1])
             v1 = int(mat1)
             res = res + v0 + v1
+        return [str(res)]'''
+    def getResult(self, key):
+        res = 0
+        for slot, tile in self.tiles.items():
+            if (tile is None):
+                tile = 0
+            res = slot - tile
+        print(res)
         return [str(res)]
     # alignFreeSlotWithFilter.
     def onAlignFinish(self, key, value):
