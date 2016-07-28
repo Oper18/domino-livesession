@@ -59,12 +59,11 @@ class DestinationImpl(object):
             res = res + v0 + v1
         return [str(res)]'''
     def getResult(self, key):
-        res = 0
-        for slot, tile in self.tiles.items():
-            if (tile is None):
-                tile = 0
-            res = slot - tile
-        print(res)
+        freeSlot = 0
+        for i in xrange(0, DESTINATION_SLOTS_NB):
+            if (self.tiles[i] is None):
+                freeSlot = freeSlot + 1
+        res = 10 - freeSlot
         return [str(res)]
     # alignFreeSlotWithFilter.
     def onAlignFinish(self, key, value):

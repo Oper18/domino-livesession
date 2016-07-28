@@ -50,10 +50,10 @@ class MainImpl(object):
         self.c.report("main.clearLCD", "0")
     def setDisplayResults(self, key, value):
         dst = self.c.get("destination.result")[0]
-        src = self.c.get("source.result")[0]
+        #src = self.c.get("source.result")[0]
         #val = int(dst) - int(src)
-        self.selectionsNb = int(dst) - int(src)
-        print('selectionsNb=%d' %self.selectionsNb)
+        #self.selectionsNb = int(dst) - int(src)
+        self.selectionsNb = int(dst) - 6
         self.displaySelectionsNb()
         #self.c.set("lcd.$SCENE.$LCD.value", str(val))
         self.c.report("main.displayResults", "0")
