@@ -26,13 +26,14 @@ class SourceImpl(object):
         res = 0
         for slot, tile in self.tiles.items():
             if (tile is None):
-                tile = 'tile00'
+                break
+             #   tile = 'tile00'
              #   tile=0
              #   tile=str(tile)
             self.c.setConst("TILE", tile)
             mat = self.c.get("node.$SCENE.$TILE.material")[0]
-            if (mat is ''):
-                mat = 'tile00'
+            #if (mat is ''):
+             #   mat = 'tile00'
             #if (mat is ''):
              #   mat0='0'
              #   mat1='0'
