@@ -42,23 +42,23 @@ class DestinationImpl(object):
         res = 0
         for slot, tile in self.tiles.items():
             if (tile is None):
-                tile=0
-                tile=str(tile)
+                tile = 'tile00'
+             #   tile=0
+             #   tile=str(tile)
             self.c.setConst("TILE", tile)
             mat = self.c.get("node.$SCENE.$TILE.material")[0]
-            #v0 = int(mat[-2])
             if (mat is ''):
-                mat0='0'
-                mat1='0'
-            else:
-                mat0=mat[-2]
-                mat1=mat[-1]
-            v0 = int(mat0)
-            #v1 = int(mat[-1])
-            v1 = int(mat1)
-            print('dst_mat=%s' %mat)
-            print('v0=%d' %v0)
-            print('v1=%d' %v1)
+                mat = 'tile00'
+            #if (mat is ''):
+             #   mat0='0'
+             #   mat1='0'
+            #else:
+             #   mat0=mat[-2]
+             #   mat1=mat[-1]
+            v0 = int(mat[-2])
+            #v0 = int(mat0)
+            v1 = int(mat[-1])
+            #v1 = int(mat1)
             res = res + v0 + v1
         return [str(res)]
     # alignFreeSlotWithFilter.
