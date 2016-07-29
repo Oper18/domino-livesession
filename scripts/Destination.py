@@ -41,7 +41,7 @@ class DestinationImpl(object):
         res = 0
         for slot, tile in self.tiles.items():
             if (tile is None):
-                break
+                continue
              #   tile = 'tile00'
              #   tile=0
              #   tile=str(tile)
