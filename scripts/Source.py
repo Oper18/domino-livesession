@@ -27,20 +27,23 @@ class SourceImpl(object):
         res = 0
         for slot, tile in self.tiles.items():
             if (tile is None):
-                tile=0
-                tile=str(tile)
+                tile = 'tile00'
+             #   tile=0
+             #   tile=str(tile)
             self.c.setConst("TILE", tile)
             mat = self.c.get("node.$SCENE.$TILE.material")[0]
             if (mat is ''):
-                mat0='0'
-                mat1='0'
-            else:
-                mat0=mat[-2]
-                mat1=mat[-1]
-            #i = int(mat[-2])
-            i = int(mat0)
-            #j = int(mat[-1])
-            j = int(mat1)
+                mat = 'tile00'
+            #if (mat is ''):
+             #   mat0='0'
+             #   mat1='0'
+            #else:
+             #   mat0=mat[-2]
+             #   mat1=mat[-1]
+            i = int(mat[-2])
+            #i = int(mat0)
+            j = int(mat[-1])
+            #j = int(mat1)
             res = res + i + j
         return [str(res)]
     # alignSelectedTileWithFilter.
