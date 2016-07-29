@@ -1,6 +1,5 @@
 
 from pymjin2 import *
-import sys, traceback
 
 DESTINATION_ACTION_LIFT_TILE   = "move.default.liftTile"
 DESTINATION_ACTION_ROTATE      = "rotate.default.rotateDestination"

@@ -1,6 +1,5 @@
 
 from pymjin2 import *
-import sys, traceback
 
 SOURCE_ACTION_DROP_TILE      = "move.default.lowerTile"
 SOURCE_ACTION_ROTATE         = "rotate.default.rotateSource"
