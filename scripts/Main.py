@@ -51,11 +51,8 @@ class MainImpl(object):
     def setDisplayResults(self, key, value):
         dst = self.c.get("destination.result")[0]
         src = self.c.get("source.result")[0]
-        #val = int(dst) - int(src)
-        #self.selectionsNb = int(dst) - int(src)
         self.selectionsNb = int(dst) - int(src)
         self.displaySelectionsNb()
-        #self.c.set("lcd.$SCENE.$LCD.value", str(val))
         self.c.report("main.displayResults", "0")
     def setFinishTheGameIfDestinationIsFull(self, key, value):
         dstFull = self.c.get("destionation.isFull")[0]
@@ -64,9 +61,7 @@ class MainImpl(object):
             self.c.set("$SEQ.active", "1")
         self.c.report("main.finishTheGameIfDestinationIsFull", "0")
     def setIncreaseSelectionsNbAndDisplayIt(self, key, value):
-        #self.selectionsNb = self.selectionsNb + 1
         self.setDisplayResults(key, value)
-        #self.displaySelectionsNb()
         self.c.report("main.increaseSelectionsNbAndDisplayIt", "0")
     # replayStartSound.
     def setReplayStartSound(self, key, value):
