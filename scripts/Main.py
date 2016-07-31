@@ -27,7 +27,7 @@ class MainImpl(object):
             return
         self.isStarted = True
         self.selectionsNb = 0
-        self.displaySelectionsNb()
+        #self.displaySelectionsNb()
         self.c.setConst("SEQ", MAIN_SEQUENCE_START)
         self.c.set("$SEQ.active", "1")
     def setAssignFilterTileToDestination(self, key, value):

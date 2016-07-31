@@ -13,6 +13,7 @@ createSourceTiles
     source.dropLastCreatedTile
     filter.createTile
     filter.dropLastCreatedTile
+    main.displayResults
 sourceTileSelection
     main.increaseSelectionsNbAndDisplayIt
     destination.disallowTileSelection
