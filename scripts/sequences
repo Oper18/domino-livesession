@@ -15,7 +15,7 @@ createSourceTiles
     filter.dropLastCreatedTile
     main.displayResults
 sourceTileSelection
-    main.increaseSelectionsNbAndDisplayIt
+    main.displayResults
     destination.disallowTileSelection
     source.disallowTileSelection
     source.alignSelectedTileWithFilter
@@ -25,6 +25,7 @@ sourceTileSelection
     source.allowTileSelection
     filter.ifNoFreeSlotsPerformAlgorithm
 destinationTileSelection
+    main.displayResults
     destination.disallowTileSelection
     filter.alignFilterSlotWithDestination
     destination.alignFreeSlotWithFilter

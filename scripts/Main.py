@@ -15,9 +15,7 @@ class MainImpl(object):
         self.selectionsNb = None
         self.fileNameAbs = None
     def __del__(self):
-        self.c = None
-    def displaySelectionsNb(self):
-        self.c.set("lcd.$SCENE.$LCD.value", str(self.selectionsNb))           
+        self.c = None          
     def onFileNameAbs(self, key, value):
         self.fileNameAbs = value[0]
     def onSpace(self, key, value):
@@ -27,7 +25,6 @@ class MainImpl(object):
             return
         self.isStarted = True
         self.selectionsNb = 0
-        #self.displaySelectionsNb()
         self.c.setConst("SEQ", MAIN_SEQUENCE_START)
         self.c.set("$SEQ.active", "1")
     def setAssignFilterTileToDestination(self, key, value):
@@ -52,7 +49,7 @@ class MainImpl(object):
         dst = self.c.get("destination.result")[0]
         src = self.c.get("source.result")[0]
         self.selectionsNb = int(dst) - int(src)
-        self.displaySelectionsNb()
+        self.c.set("lcd.$SCENE.$LCD.value", str(self.selectionsNb))
         self.c.report("main.displayResults", "0")
     def setFinishTheGameIfDestinationIsFull(self, key, value):
         dstFull = self.c.get("destionation.isFull")[0]
@@ -60,9 +57,6 @@ class MainImpl(object):
             self.c.setConst("SEQ", MAIN_SEQUENCE_FINISH)
             self.c.set("$SEQ.active", "1")
         self.c.report("main.finishTheGameIfDestinationIsFull", "0")
-    def setIncreaseSelectionsNbAndDisplayIt(self, key, value):
-        self.setDisplayResults(key, value)
-        self.c.report("main.increaseSelectionsNbAndDisplayIt", "0")
     # replayStartSound.
     def setReplayStartSound(self, key, value):
         self.c.setConst("SNDSTART", MAIN_SOUND_START)
@@ -88,8 +82,6 @@ class Main(object):
         self.c.provide("main.displayResults",   self.impl.setDisplayResults)
         self.c.provide("main.finishTheGameIfDestinationIsFull",
                        self.impl.setFinishTheGameIfDestinationIsFull)
-        self.c.provide("main.increaseSelectionsNbAndDisplayIt",
-                       self.impl.setIncreaseSelectionsNbAndDisplayIt)
         self.c.provide("main.replayStartSound", self.impl.setReplayStartSound)
 
         # Read sequence file.
