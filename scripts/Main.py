@@ -12,7 +12,6 @@ class MainImpl(object):
     def __init__(self, c):
         self.c = c
         self.isStarted = False
-        self.selectionsNb = None
         self.fileNameAbs = None
     def __del__(self):
         self.c = None          
@@ -24,7 +23,6 @@ class MainImpl(object):
             print "The game has already been started"
             return
         self.isStarted = True
-        self.selectionsNb = 0
         self.c.setConst("SEQ", MAIN_SEQUENCE_START)
         self.c.set("$SEQ.active", "1")
     def setAssignFilterTileToDestination(self, key, value):
@@ -48,8 +46,8 @@ class MainImpl(object):
     def setDisplayResults(self, key, value):
         dst = self.c.get("destination.result")[0]
         src = self.c.get("source.result")[0]
-        self.selectionsNb = int(dst) - int(src)
-        self.c.set("lcd.$SCENE.$LCD.value", str(self.selectionsNb))
+        val = int(dst) - int(src)
+        self.c.set("lcd.$SCENE.$LCD.value", str(val))
         self.c.report("main.displayResults", "0")
     def setFinishTheGameIfDestinationIsFull(self, key, value):
         dstFull = self.c.get("destionation.isFull")[0]
