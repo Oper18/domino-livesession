@@ -3,7 +3,7 @@ from pymjin2 import *
 
 LCD_MATERIAL_NAME_PREFIX = "lcd_digit"
 
-class LCDImpl(object):
+class TimerImpl(object):
     def __init__(self, c):
         self.c = c
         self.digits = []
