@@ -140,3 +140,6 @@ material
         lcd_digit-
             diffuse = pipeline/textures/lcd_digit_tex-.png
             normal = pipeline/textures/lcd_digit_n.png
+        timer
+            diffuse = pipeline/textures/lcd_base_tex.png
+            normal = pipeline/textures/lcd_base_n.png
