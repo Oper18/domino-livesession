@@ -49,6 +49,8 @@ class MainImpl(object):
         score = int(dst) - int(src)
         self.c.set("lcd.$SCENE.$LCD.value", str(score))
         self.c.report("main.displayResults", "0")
+    def setDisplayTime(self, key, value):
+        pass
     def setFinishTheGameIfDestinationIsFull(self, key, value):
         dstFull = self.c.get("destionation.isFull")[0]
         if (dstFull == "1"):
