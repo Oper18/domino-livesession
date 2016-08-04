@@ -41,13 +41,13 @@ class TimerImpl(object):
             else:
                 self.setDigitValue(i, "")
 
-class LCD(object):
+class Timer(object):
     def __init__(self, sceneName, nodeName, env):
         self.c = EnvironmentClient(env, "LCD/" + nodeName)
-        self.impl = LCDImpl(self.c)
+        self.impl = TimerImpl(self.c)
         self.c.setConst("SCENE",  sceneName)
         self.c.setConst("NODE",   nodeName)
-        self.c.provide("lcd.$SCENE.$NODE.value", self.impl.setValue)
+        self.c.provide("timer.$SCENE.$NODE.value", self.impl.setValue)
     def __del__(self):
         # Tear down.
         self.c.clear()
@@ -56,7 +56,7 @@ class LCD(object):
         del self.c
 
 def SCRIPT_CREATE(sceneName, nodeName, env):
-    return LCD(sceneName, nodeName, env)
+    return Timer(sceneName, nodeName, env)
 
 def SCRIPT_DESTROY(instance):
     del instance
