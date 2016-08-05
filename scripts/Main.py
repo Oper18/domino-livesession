@@ -55,7 +55,7 @@ class MainImpl(object):
         self.c.report("main.displayResults", "0")
     def setDisplayTime(self, key, value):
         print('main1')
-        time = self.c.get("timer.tick")[0]
+        time = self.c.get("timer.setTime")[0]
         print('main2')
         self.c.set("timer.$SCENE.$Timer.value", str(time))
         self.c.report("main.displayTime", "0")
