@@ -14,7 +14,6 @@ createSourceTiles
     filter.createTile
     filter.dropLastCreatedTile
     main.displayResults
-    main.displayTime
 sourceTileSelection
     main.displayResults
     destination.disallowTileSelection

@@ -14,6 +14,7 @@ class MainImpl(object):
         self.c = c
         self.isStarted = False
         self.fileNameAbs = None
+        #self.time = None
     def __del__(self):
         self.c = None          
     def onFileNameAbs(self, key, value):
@@ -24,6 +25,8 @@ class MainImpl(object):
             print "The game has already been started"
             return
         self.isStarted = True
+        time = '0-00'
+        self.c.set("timer.$SCENE.$Timer.value", str(time))
         self.c.setConst("SEQ", MAIN_SEQUENCE_START)
         self.c.set("$SEQ.active", "1")
     def setAssignFilterTileToDestination(self, key, value):
@@ -44,9 +47,9 @@ class MainImpl(object):
     def setClearLCD(self, key, value):
         self.c.set("lcd.$SCENE.$LCD.value", "")
         self.c.report("main.clearLCD", "0")
-    #def setClearTimer(self, key, value):
-     #   self.c.set("timer.$SCENE.$Timer.value", "")
-     #   self.c.report("main.clearTimer", "0")
+    def setClearTimer(self, key, value):
+        self.c.set("timer.$SCENE.$Timer.value", "")
+        self.c.report("main.clearTimer", "0")
     def setDisplayResults(self, key, value):
         dst = self.c.get("destination.result")[0]
         src = self.c.get("source.result")[0]
@@ -54,11 +57,15 @@ class MainImpl(object):
         self.c.set("lcd.$SCENE.$LCD.value", str(score))
         self.c.report("main.displayResults", "0")
     def setDisplayTime(self, key, value):
+        print('main0')
+        self.setClearTimer(key, value)
         print('main1')
-        time = self.c.get("timer.setTime")[0]
+        time = self.c.get("timer.tick")[0]
         print('main2')
         self.c.set("timer.$SCENE.$Timer.value", str(time))
+        print('main3')
         self.c.report("main.displayTime", "0")
+        print('main4')
     def setFinishTheGameIfDestinationIsFull(self, key, value):
         dstFull = self.c.get("destionation.isFull")[0]
         if (dstFull == "1"):
@@ -80,6 +87,9 @@ class Main(object):
         self.c.setConst("LCD",      MAIN_LCD_NAME)
         self.c.setConst("Timer",      MAIN_TIMER_NAME)
         self.c.listen("input.SPACE.key", "1", self.impl.onSpace)
+        self.c.listen("timer.clock.tick", None, self.impl.setDisplayTime)
+        self.c.set("timer.clock.timeout", "10000")
+        self.c.set("timer.clock.enabled", "1")
 
         self.c.provide("main.assignFilterTileToDestination",
                        self.impl.setAssignFilterTileToDestination)
