@@ -47,9 +47,9 @@ class MainImpl(object):
     def setClearLCD(self, key, value):
         self.c.set("lcd.$SCENE.$LCD.value", "")
         self.c.report("main.clearLCD", "0")
-    def setClearTimer(self, key, value):
-        self.c.set("timer.$SCENE.$Timer.value", "")
-        self.c.report("main.clearTimer", "0")
+    #def setClearTimer(self, key, value):
+        #self.c.set("timer.$SCENE.$Timer.value", "")
+        #self.c.report("main.clearTimer", "0")
     def setDisplayResults(self, key, value):
         dst = self.c.get("destination.result")[0]
         src = self.c.get("source.result")[0]
@@ -58,7 +58,7 @@ class MainImpl(object):
         self.c.report("main.displayResults", "0")
     def setDisplayTime(self, key, value):
         print('main0')
-        self.setClearTimer(key, value)
+        #self.setClearTimer(key, value)
         print('main1')
         time = self.c.get("timer.tick")[0]
         print('main2')
@@ -88,7 +88,7 @@ class Main(object):
         self.c.setConst("Timer",      MAIN_TIMER_NAME)
         self.c.listen("input.SPACE.key", "1", self.impl.onSpace)
         self.c.listen("timer.clock.tick", None, self.impl.setDisplayTime)
-        self.c.set("timer.clock.timeout", "10000")
+        self.c.set("timer.clock.timeout", "1000")
         self.c.set("timer.clock.enabled", "1")
 
         self.c.provide("main.assignFilterTileToDestination",
@@ -100,7 +100,7 @@ class Main(object):
         self.c.provide("main.clearLCD",         self.impl.setClearLCD)
         #self.c.provide("main.clearTimer",         self.impl.setClearTimer)
         self.c.provide("main.displayResults",   self.impl.setDisplayResults)
-        self.c.provide("main.displayTime",   self.impl.setDisplayTime)
+        #self.c.provide("main.displayTime",   self.impl.setDisplayTime)
         self.c.provide("main.finishTheGameIfDestinationIsFull",
                        self.impl.setFinishTheGameIfDestinationIsFull)
         self.c.provide("main.replayStartSound", self.impl.setReplayStartSound)

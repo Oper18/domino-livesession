@@ -27,13 +27,19 @@ class TimerImpl(object):
             self.minutes = self.minutes + 1
             print('tick2.2')
             self.seconds = 0
+            sec = str(self.seconds)
         print('tick3')
-        time = str(self.minutes) + '-' + str(self.seconds)
+        if len(str(self.seconds)) < 2:
+            sec='0' + str(self.seconds)
+        if len(str(self.minutes)) > 1:
+            sec = str(self.seconds)[:1]
+        time = str(self.minutes) + '-' + sec
         print('tick4')
         #self.c.set("timer.clock.tick", time)
         print('tick5')
         #self.c.unlisten("timer.clock.tick")
-        #self.c.report("timer.setTime", "0")
+        #self.c.report(self.Timer, time)
+        print('time=%s' %time)
         return [str(time)]
     def setDigitValue(self, digitID, value):
         self.c.setConst("DIGIT", self.digits[digitID])
@@ -77,7 +83,9 @@ class Timer(object):
         self.impl = TimerImpl(self.c)
         self.c.setConst("SCENE",  sceneName)
         self.c.setConst("NODE",   nodeName)
-        self.c.listen("timer.clock.tick", None, self.impl.onTick)
+        #self.c.listen("timer.clock.tick", None, self.impl.onTick)
+        #self.c.set("timer.clock.timeout", "10000")
+        #self.c.set("timer.clock.enabled", "1")
         self.c.provide("timer.$SCENE.$NODE.value", self.impl.setValue)
         #self.c.provide("timer.setTime", None, self.impl.setTime)
         self.c.provide("timer.tick", None, self.impl.onTick)
