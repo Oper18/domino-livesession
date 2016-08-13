@@ -14,7 +14,7 @@ class MainImpl(object):
         self.c = c
         self.isStarted = False
         self.fileNameAbs = None
-        #self.time = None
+        self.c.set("timer.clock.enabled", "0")
     def __del__(self):
         self.c = None          
     def onFileNameAbs(self, key, value):
@@ -29,6 +29,7 @@ class MainImpl(object):
         self.c.set("timer.$SCENE.$Timer.value", str(time))
         self.c.setConst("SEQ", MAIN_SEQUENCE_START)
         self.c.set("$SEQ.active", "1")
+        self.c.set("timer.clock.enabled", "1")
     def setAssignFilterTileToDestination(self, key, value):
         tileName = self.c.get("filter.lastUsedTile")[0]
         self.c.set("filter.removeUsedTile", "1")
@@ -44,6 +45,10 @@ class MainImpl(object):
         self.c.set("source.removeSelectedTile", "1")
         self.c.set("filter.acceptTile", tileName)
         self.c.report("main.assignSelectedSourceTileToFilter", "0")
+    '''def setCallDisplayTime(self, key, value):
+        self.c.listen("timer.clock.tick", None, self.setDisplayTime)
+        self.c.set("timer.clock.timeout", "1000")
+        self.c.set("timer.clock.enabled", "1")'''
     def setClearLCD(self, key, value):
         self.c.set("lcd.$SCENE.$LCD.value", "")
         self.c.report("main.clearLCD", "0")
@@ -89,7 +94,7 @@ class Main(object):
         self.c.listen("input.SPACE.key", "1", self.impl.onSpace)
         self.c.listen("timer.clock.tick", None, self.impl.setDisplayTime)
         self.c.set("timer.clock.timeout", "1000")
-        self.c.set("timer.clock.enabled", "1")
+        #self.c.set("timer.clock.enabled", "1")
 
         self.c.provide("main.assignFilterTileToDestination",
                        self.impl.setAssignFilterTileToDestination)
@@ -97,6 +102,7 @@ class Main(object):
                        self.impl.setAssignSelectedDestinationTileToFilter)
         self.c.provide("main.assignSelectedSourceTileToFilter",
                        self.impl.setAssignSelectedSourceTileToFilter)
+        #self.c.provide("main.callDisplayTime", self.impl.setCallDisplayTime)
         self.c.provide("main.clearLCD",         self.impl.setClearLCD)
         #self.c.provide("main.clearTimer",         self.impl.setClearTimer)
         self.c.provide("main.displayResults",   self.impl.setDisplayResults)

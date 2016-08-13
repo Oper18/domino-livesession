@@ -30,7 +30,9 @@ class TimerImpl(object):
             sec = str(self.seconds)
         print('tick3')
         if len(str(self.seconds)) < 2:
-            sec='0' + str(self.seconds)
+            sec = '0' + str(self.seconds)
+        else:
+            sec = str(self.seconds)
         if len(str(self.minutes)) > 1:
             sec = str(self.seconds)[:1]
         time = str(self.minutes) + '-' + sec
