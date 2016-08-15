@@ -19,16 +19,11 @@ class TimerImpl(object):
         # Children are digits.
         self.digits = self.c.get("node.$SCENE.$NODE.children")
     def onTick(self, key):
-        print('tick1')
         self.seconds = self.seconds + 1
-        print('tick2')
         if self.seconds == 60:
-            print('tick2.1')
             self.minutes = self.minutes + 1
-            print('tick2.2')
             self.seconds = 0
             sec = str(self.seconds)
-        print('tick3')
         if len(str(self.seconds)) < 2:
             sec = '0' + str(self.seconds)
         else:
@@ -36,12 +31,6 @@ class TimerImpl(object):
         if len(str(self.minutes)) > 1:
             sec = str(self.seconds)[:1]
         time = str(self.minutes) + '-' + sec
-        print('tick4')
-        #self.c.set("timer.clock.tick", time)
-        print('tick5')
-        #self.c.unlisten("timer.clock.tick")
-        #self.c.report(self.Timer, time)
-        print('time=%s' %time)
         return [str(time)]
     def setDigitValue(self, digitID, value):
         self.c.setConst("DIGIT", self.digits[digitID])

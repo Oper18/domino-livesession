@@ -45,16 +45,9 @@ class MainImpl(object):
         self.c.set("source.removeSelectedTile", "1")
         self.c.set("filter.acceptTile", tileName)
         self.c.report("main.assignSelectedSourceTileToFilter", "0")
-    '''def setCallDisplayTime(self, key, value):
-        self.c.listen("timer.clock.tick", None, self.setDisplayTime)
-        self.c.set("timer.clock.timeout", "1000")
-        self.c.set("timer.clock.enabled", "1")'''
     def setClearLCD(self, key, value):
         self.c.set("lcd.$SCENE.$LCD.value", "")
         self.c.report("main.clearLCD", "0")
-    #def setClearTimer(self, key, value):
-        #self.c.set("timer.$SCENE.$Timer.value", "")
-        #self.c.report("main.clearTimer", "0")
     def setDisplayResults(self, key, value):
         dst = self.c.get("destination.result")[0]
         src = self.c.get("source.result")[0]
@@ -62,15 +55,9 @@ class MainImpl(object):
         self.c.set("lcd.$SCENE.$LCD.value", str(score))
         self.c.report("main.displayResults", "0")
     def setDisplayTime(self, key, value):
-        print('main0')
-        #self.setClearTimer(key, value)
-        print('main1')
         time = self.c.get("timer.tick")[0]
-        print('main2')
         self.c.set("timer.$SCENE.$Timer.value", str(time))
-        print('main3')
         self.c.report("main.displayTime", "0")
-        print('main4')
     def setFinishTheGameIfDestinationIsFull(self, key, value):
         dstFull = self.c.get("destionation.isFull")[0]
         if (dstFull == "1"):
@@ -94,7 +81,6 @@ class Main(object):
         self.c.listen("input.SPACE.key", "1", self.impl.onSpace)
         self.c.listen("timer.clock.tick", None, self.impl.setDisplayTime)
         self.c.set("timer.clock.timeout", "1000")
-        #self.c.set("timer.clock.enabled", "1")
 
         self.c.provide("main.assignFilterTileToDestination",
                        self.impl.setAssignFilterTileToDestination)
@@ -102,11 +88,8 @@ class Main(object):
                        self.impl.setAssignSelectedDestinationTileToFilter)
         self.c.provide("main.assignSelectedSourceTileToFilter",
                        self.impl.setAssignSelectedSourceTileToFilter)
-        #self.c.provide("main.callDisplayTime", self.impl.setCallDisplayTime)
         self.c.provide("main.clearLCD",         self.impl.setClearLCD)
-        #self.c.provide("main.clearTimer",         self.impl.setClearTimer)
         self.c.provide("main.displayResults",   self.impl.setDisplayResults)
-        #self.c.provide("main.displayTime",   self.impl.setDisplayTime)
         self.c.provide("main.finishTheGameIfDestinationIsFull",
                        self.impl.setFinishTheGameIfDestinationIsFull)
         self.c.provide("main.replayStartSound", self.impl.setReplayStartSound)
