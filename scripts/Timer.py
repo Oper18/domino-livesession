@@ -1,7 +1,7 @@
 
 from pymjin2 import *
 
-LCD_MATERIAL_NAME_PREFIX = "lcd_digit"
+TIMER_MATERIAL_NAME_PREFIX = "lcd_digit"
 
 class TimerImpl(object):
     def __init__(self, c):
@@ -34,18 +34,8 @@ class TimerImpl(object):
         return [str(time)]
     def setDigitValue(self, digitID, value):
         self.c.setConst("DIGIT", self.digits[digitID])
-        material = LCD_MATERIAL_NAME_PREFIX + value
+        material = TIMER_MATERIAL_NAME_PREFIX + value
         self.c.set("node.$SCENE.$DIGIT.material", material)
-    '''def setTime(self, key):
-        print('timer1')
-        self.c.listen("timer.clock.tick", None, self.onTick)
-        print('timer2')
-        #self.onTick(key)
-        self.c.set("timer.clock.timeout", "1000")
-        print('timer3')
-        self.c.set("timer.clock.enabled", "1")
-        print('timer4')
-        return [str(self.time)]'''
     def setValue(self, key, value):
         self.locateDigitNodesOnce()
         strval = value[0]

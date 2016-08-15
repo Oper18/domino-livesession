@@ -29,7 +29,6 @@ class MainImpl(object):
         self.c.set("timer.$SCENE.$Timer.value", str(time))
         self.c.setConst("SEQ", MAIN_SEQUENCE_START)
         self.c.set("$SEQ.active", "1")
-        self.c.set("timer.clock.enabled", "1")
     def setAssignFilterTileToDestination(self, key, value):
         tileName = self.c.get("filter.lastUsedTile")[0]
         self.c.set("filter.removeUsedTile", "1")
@@ -57,6 +56,7 @@ class MainImpl(object):
     def setDisplayTime(self, key, value):
         time = self.c.get("timer.tick")[0]
         self.c.set("timer.$SCENE.$Timer.value", str(time))
+        self.c.set("timer.clock.enabled", "1")
         self.c.report("main.displayTime", "0")
     def setFinishTheGameIfDestinationIsFull(self, key, value):
         dstFull = self.c.get("destionation.isFull")[0]
@@ -90,6 +90,7 @@ class Main(object):
                        self.impl.setAssignSelectedSourceTileToFilter)
         self.c.provide("main.clearLCD",         self.impl.setClearLCD)
         self.c.provide("main.displayResults",   self.impl.setDisplayResults)
+        self.c.provide("main.displayTime",	self.impl.setDisplayTime)
         self.c.provide("main.finishTheGameIfDestinationIsFull",
                        self.impl.setFinishTheGameIfDestinationIsFull)
         self.c.provide("main.replayStartSound", self.impl.setReplayStartSound)
