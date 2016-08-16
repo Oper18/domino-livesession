@@ -31,8 +31,6 @@ class TimerImpl(object):
         if len(str(self.minutes)) > 1:
             sec = str(self.seconds)[:1]
         time = str(self.minutes) + '-' + sec
-        #self.c.set("timer.$SCENE.$Timer.value", str(time))
-        #self.c.set("timer.clock.enabled", "1")
         return [str(time)]
     def setDigitValue(self, digitID, value):
         self.c.setConst("DIGIT", self.digits[digitID])
@@ -66,9 +64,6 @@ class Timer(object):
         self.impl = TimerImpl(self.c)
         self.c.setConst("SCENE",  sceneName)
         self.c.setConst("NODE",   nodeName)
-        #self.c.listen("timer.clock.tick", None, self.impl.onTick)
-        #self.c.set("timer.clock.timeout", "1000")
-        #self.c.set("timer.clock.enabled", "1")
         self.c.provide("timer.$SCENE.$NODE.value", self.impl.setValue)
         self.c.provide("timer.tick", None, self.impl.onTick)
     def __del__(self):
