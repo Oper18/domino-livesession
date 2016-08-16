@@ -9,7 +9,6 @@ class TimerImpl(object):
         self.digits = []
         self.seconds = 0
         self.minutes = 0
-        self.time = 0
     def __del__(self):
         self.c = None
     def locateDigitNodesOnce(self):
