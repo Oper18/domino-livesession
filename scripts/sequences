@@ -69,7 +69,6 @@ start
     main.replayStartSound
     createSourceTiles
     source.allowTileSelection
-    main.callTimer
 finish
     source.disallowTileSelection
     destination.disallowTileSelection

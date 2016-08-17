@@ -44,10 +44,10 @@ class MainImpl(object):
         self.c.set("source.removeSelectedTile", "1")
         self.c.set("filter.acceptTile", tileName)
         self.c.report("main.assignSelectedSourceTileToFilter", "0")
-    def setCallTimer(self, key, value):
+    '''def setCallTimer(self, key, value):
         self.c.listen("timer.clock.tick", None, self.setDisplayTime)
         self.c.set("timer.clock.timeout", "1000")
-        self.c.set("timer.clock.enabled", "1")
+        self.c.set("timer.clock.enabled", "1")'''
     def setClearLCD(self, key, value):
         self.c.set("lcd.$SCENE.$LCD.value", "")
         self.c.report("main.clearLCD", "0")
@@ -57,12 +57,12 @@ class MainImpl(object):
         score = int(dst) - int(src)
         self.c.set("lcd.$SCENE.$LCD.value", str(score))
         self.c.report("main.displayResults", "0")
-    def setDisplayTime(self, key, value):
+    '''def setDisplayTime(self, key, value):
         time = self.c.get("timer.tick")[0]
         self.c.set("timer.$SCENE.$Timer.value", str(time))
         self.c.set("timer.clock.enabled", "1")
         self.c.set("timer.clock.timeout", "1000")
-        self.c.report("main.displayTime", "0")
+        self.c.report("main.displayTime", "0")'''
     def setFinishTheGameIfDestinationIsFull(self, key, value):
         dstFull = self.c.get("destionation.isFull")[0]
         if (dstFull == "1"):
@@ -93,7 +93,7 @@ class Main(object):
                        self.impl.setAssignSelectedSourceTileToFilter)
         self.c.provide("main.clearLCD",         self.impl.setClearLCD)
         self.c.provide("main.displayResults",   self.impl.setDisplayResults)
-        self.c.provide("main.callTimer",	self.impl.setCallTimer)
+        #self.c.provide("main.callTimer",	self.impl.setCallTimer)
         self.c.provide("main.finishTheGameIfDestinationIsFull",
                        self.impl.setFinishTheGameIfDestinationIsFull)
         self.c.provide("main.replayStartSound", self.impl.setReplayStartSound)
