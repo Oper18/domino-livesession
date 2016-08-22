@@ -6,7 +6,7 @@ TIMER_MATERIAL_NAME_PREFIX = "lcd_digit"
 
 #Класс с действиями
 class TimerImpl(object):
-    #Конструктор класса
+    #Конструктор класса 
     def __init__(self, c):
         #Аргумент передаваемый в конструктор при вызове
         self.c = c
@@ -32,38 +32,38 @@ class TimerImpl(object):
         self.digits = self.c.get("node.$SCENE.$NODE.children")
     #Отсчет времени
     def onTick(self, key, value):
-        #Увеличение секунд на 1
+        #Увеличение секунд на 1 каждый раз когда вызывается функция - отсчет времени
         self.seconds = self.seconds + 1
-        #Проверка количества секунд
+        #Проверка количества секунд, если секунд 60, минуты увеличиваются а секунды обнуляются
         if self.seconds == 60:
             #Увеличение минут на 1
             self.minutes = self.minutes + 1
             #Обнуление секунд
             self.seconds = 0
-            #Секунда->строка
+            #Установка секунд в строку для передачи времени в таймер
             sec = str(self.seconds)
-        #Проверка длины секунд (меньше 2)
+        #Проверка длины секунд (меньше 2) для отображения м-0с если секунд меньше 10
         if len(str(self.seconds)) < 2:
             #Установка 0 перед секундой
             sec = '0' + str(self.seconds)
-        #Проверка длины секунды (если не 1)
+        #Проверка длины секунды (если не 1) для отображения м-сс если секунд больше 10
         else:
             #Установка секунд в том виде как есть
             sec = str(self.seconds)
-        #Проверка длины минут (больше 1)
+        #Проверка длины минут (больше 1) для перехода от отображения м-сс к мм-с
         if len(str(self.minutes)) > 1:
             #установка десятков секунд и отброс единиц
             sec = str(self.seconds)[:1]
-        #Установка переменной времени
+        #Установка переменной времени с текстом который отобразтся на дисплее
         time = str(self.minutes) + '-' + sec
         #Печать переменной времени
         print('time=%s' %time)
         #return [str(time)]
-    #Функция установки значения фишек
+    #Функция значения фишек
     def setDigitValue(self, digitID, value):
-        #Установка константы DIGIT (присваивается значение текущей фишки)
+        #Установка константы DIGIT (присваивается значение текущей фишки) для передачи ее в set
         self.c.setConst("DIGIT", self.digits[digitID])
-        #Создание переменной (материал+цифра=имя материала)
+        #Создание переменной (материал+цифра=имя материала) для передачи ее в set
         material = TIMER_MATERIAL_NAME_PREFIX + value
         #Установка ключа
         self.c.set("node.$SCENE.$DIGIT.material", material)
@@ -76,10 +76,10 @@ class TimerImpl(object):
         # Display nothing if:
         # * Value is longer than we can display.
         # * Value is none.
-        #Проверка длины strval и наличия переменной
+        #Проверка длины strval и наличия переменной чтобы оставить дисплей пустым при длине большей чем можем отобразить или если value не задано 
         if ((len(strval) > len(self.digits)) or
             not len(strval)):
-            #Цикл по длине списк self.digits
+            #Цикл по длине списка self.digits для проверки каждой фишки
             for i in xrange(0, len(self.digits)):
                 #Вызов функции и передача значений (digitID=номер текущей итерации, None)
                 self.setDigitValue(i, "")
@@ -87,12 +87,12 @@ class TimerImpl(object):
             return
         # Divide string value into separate digits.
         # Use empty value for padded digits.
-        #Создание переменной длина self.digits - длина переменной strval
+        #Создание переменной длина self.digits - длина переменной strval для задания значения None для value для пустых слотов
         start = len(self.digits) - len(strval)
-        #Цикл по длине списк self.digits
+        #Цикл по длине списка self.digits
         for i in xrange(0, len(self.digits)):
             # Digit.
-            #Условие номер итерации больше значения переменной
+            #Условие номер итерации больше значения переменной для определения наличия фишки в слоте
             if (i >= start):
                 #Вызов функции с параметрами (номер итерации, переменная)
                 self.setDigitValue(i, strval[i - start])
@@ -106,23 +106,23 @@ class TimerImpl(object):
 class Timer(object):
     #Конструктор класса
     def __init__(self, sceneName, nodeName, env):
-        #Аргумент передаваемы в конструктор при вызове
+        #Аргумент передаваемый в конструктор при вызове
         self.c = EnvironmentClient(env, "Timer/" + nodeName)
         #Назначение ссылки на класс с действиями
         self.impl = TimerImpl(self.c)
-        #Создание константы для переменной sceneName
+        #Создание константы для переменной sceneName для использования в методе set
         self.c.setConst("SCENE",  sceneName)
-        #Создание константы для переменной nodeName
+        #Создание константы для переменной nodeName для использования в методе set
         self.c.setConst("NODE",   nodeName)
-        #Вызов функции при прохождении указанного количества времени
+        #Вызов функции при прохождении указанного количества времени для работы таймера
         self.c.listen("timer.clock.tick", None, self.impl.onTick)
         #Кол-во времени после которого вызывается функция
         self.c.set("timer.clock.timeout", "1000")
         #Запуск отсчета времени
         self.c.set("timer.clock.enabled", "1")
-        #Создание ссылки для обращения к функции
+        #Создание ссылки для обращения к функции для использования данной ссылки другими скриптами
         self.c.provide("timer.$SCENE.$NODE.value", self.impl.setValue)
-        #Создание ссылки для обращения к функции
+        #Создание ссылки для обращения к функции для использования данной ссылки другими скриптами
         self.c.provide("timer.tick", None, self.impl.onTick)
     #Деструктор класса
     def __del__(self):
