@@ -1,8 +1,6 @@
 
 from pymjin2 import *
 
-TIMER_MATERIAL_NAME_PREFIX = "lcd_digit"
-
 class TimerImpl(object):
     def __init__(self, c):
         self.c = c
@@ -23,7 +21,7 @@ class TimerImpl(object):
         if len(str(self.minutes)) > 1:
             sec = str(self.seconds)[:1]
         time = str(self.minutes) + '-' + sec
-        print('time=%s' %time)
+        print('time1=%s' %time)
 
 class Timer(object):
     def __init__(self, sceneName, nodeName, env):

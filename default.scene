@@ -269,4 +269,35 @@ node
             material = lcd_digit
             model = models/lcd_digit.osgt
             selectable = 1
-
+        timer2
+            parent = base
+            position = 2.000000 4.500000 4.000000
+            rotation = 90.000000 0.000000 0.000000
+            material = timer
+            model = models/lcd_base.osgt
+            script = scripts/Timer2.py
+            selectable = 1
+        lcd_digit8
+            parent = timer2
+            position = -0.450000 0.000000 0.000000
+            material = lcd_digit
+            model = models/lcd_digit.osgt
+            selectable = 1
+        lcd_digit9
+            parent = timer2
+            position = -0.150000 0.000000 0.000000
+            material = lcd_digit
+            model = models/lcd_digit.osgt
+            selectable = 1
+        lcd_digit10
+            parent = timer2
+            position = 0.150000 0.000000 0.000000
+            material = lcd_digit
+            model = models/lcd_digit.osgt
+            selectable = 1
+        lcd_digit11
+            parent = timer2
+            position = 0.450000 0.000000 0.000000
+            material = lcd_digit
+            model = models/lcd_digit.osgt
+            selectable = 1
