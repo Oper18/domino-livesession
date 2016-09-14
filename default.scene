@@ -275,7 +275,7 @@ node
             rotation = 90.000000 0.000000 0.000000
             material = timer
             model = models/lcd_base.osgt
-            script = scripts/Timer2.py
+            script = scripts/Timer.py
             selectable = 1
         lcd_digit8
             parent = timer2
