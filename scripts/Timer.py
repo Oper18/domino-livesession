@@ -27,14 +27,17 @@ class Timer(object):
     def __init__(self, sceneName, nodeName, env):
         self.c = EnvironmentClient(env, "Timer/" + nodeName)
         self.impl = TimerImpl(self.c)
-        if nodeName=='timer1':
-            self.c.listen("timer.clock1.tick", None, self.impl.onTick)
-            self.c.set("timer.clock1.timeout", "1000")
-            self.c.set("timer.clock1.enabled", "1")
-        elif nodeName=='timer2':
-            self.c.listen("timer.clock2.tick", None, self.impl.onTick)
-            self.c.set("timer.clock2.timeout", "2000")
-            self.c.set("timer.clock2.enabled", "1")
+        #self.timeTick = [1000, 2000]
+        print(nodeName)
+        num = nodeName[5:]
+        print(num)
+        num = int(num)
+        print(num)
+        timeTick=num*1000
+        self.c.listen("timer.clock%d.tick" %num, None, self.impl.onTick)
+        self.c.set("timer.clock%d.timeout" %num, "%d" %timeTick)
+        #self.c.set("timer.clock%d.timeout" %num, "%d" %self.timeTick[num-1])
+        self.c.set("timer.clock%d.enabled" %num, "1")
     def __del__(self):
         self.c.clear()
         del self.impl
