@@ -8,7 +8,7 @@ class TimerImpl(object):
         self.minutes = 0
     def __del__(self):
         self.c = None
-    def onTick1(self, key, value):
+    def onTick(self, key, value):
         self.seconds = self.seconds + 1
         if self.seconds == 60:
             self.minutes = self.minutes + 1
@@ -22,31 +22,17 @@ class TimerImpl(object):
             sec = str(self.seconds)[:1]
         time = str(self.minutes) + '-' + sec
         print('time1=%s' %time)
-    def onTick2(self, key, value):
-        self.seconds = self.seconds + 1
-        if self.seconds == 60:
-            self.minutes = self.minutes + 1
-            self.seconds = 0
-            sec = str(self.seconds)
-        if len(str(self.seconds)) < 2:
-            sec = '0' + str(self.seconds)
-        else:
-            sec = str(self.seconds)
-        if len(str(self.minutes)) > 1:
-            sec = str(self.seconds)[:1]
-        time = str(self.minutes) + '-' + sec
-        print('time2=%s' %time)
 
 class Timer(object):
     def __init__(self, sceneName, nodeName, env):
         self.c = EnvironmentClient(env, "Timer/" + nodeName)
         self.impl = TimerImpl(self.c)
-        if nodeName=='timer':
-            self.c.listen("timer.clock1.tick", None, self.impl.onTick1)
+        if nodeName=='timer1':
+            self.c.listen("timer.clock1.tick", None, self.impl.onTick)
             self.c.set("timer.clock1.timeout", "1000")
             self.c.set("timer.clock1.enabled", "1")
         elif nodeName=='timer2':
-            self.c.listen("timer.clock2.tick", None, self.impl.onTick2)
+            self.c.listen("timer.clock2.tick", None, self.impl.onTick)
             self.c.set("timer.clock2.timeout", "2000")
             self.c.set("timer.clock2.enabled", "1")
     def __del__(self):

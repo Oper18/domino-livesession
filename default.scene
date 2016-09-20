@@ -238,7 +238,7 @@ node
             material = lcd_digit
             model = models/lcd_digit.osgt
             selectable = 1
-        timer
+        timer1
             parent = base
             position = 0.000000 4.500000 4.000000
             rotation = 90.000000 0.000000 0.000000
@@ -246,25 +246,25 @@ node
             model = models/lcd_base.osgt
             script = scripts/Timer.py
         lcd_digit4
-            parent = timer
+            parent = timer1
             position = -0.450000 0.000000 0.000000
             material = lcd_digit
             model = models/lcd_digit.osgt
             selectable = 1
         lcd_digit5
-            parent = timer
+            parent = timer1
             position = -0.150000 0.000000 0.000000
             material = lcd_digit
             model = models/lcd_digit.osgt
             selectable = 1
         lcd_digit6
-            parent = timer
+            parent = timer1
             position = 0.150000 0.000000 0.000000
             material = lcd_digit
             model = models/lcd_digit.osgt
             selectable = 1
         lcd_digit7
-            parent = timer
+            parent = timer1
             position = 0.450000 0.000000 0.000000
             material = lcd_digit
             model = models/lcd_digit.osgt
