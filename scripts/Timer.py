@@ -8,6 +8,8 @@ class TimerImpl(object):
         self.minutes = 0
     def __del__(self):
         self.c = None
+    def onSpace(self, key, value):
+        self.c.set("timer.clock$NUMBER.enabled", "1")
     def onTick(self, key, value):
         self.seconds = self.seconds + 1
         if self.seconds == 60:
@@ -28,16 +30,14 @@ class Timer(object):
         self.c = EnvironmentClient(env, "Timer/" + nodeName)
         self.impl = TimerImpl(self.c)
         #self.timeTick = [1000, 2000]
-        print(nodeName)
         num = nodeName[5:]
-        print(num)
         num = int(num)
-        print(num)
         timeTick=num*1000
+        self.c.setConst("NUMBER", str(num))
         self.c.listen("timer.clock%d.tick" %num, None, self.impl.onTick)
         self.c.set("timer.clock%d.timeout" %num, "%d" %timeTick)
         #self.c.set("timer.clock%d.timeout" %num, "%d" %self.timeTick[num-1])
-        self.c.set("timer.clock%d.enabled" %num, "1")
+        self.c.listen("input.SPACE.key", "1", self.impl.onSpace)
     def __del__(self):
         self.c.clear()
         del self.impl
